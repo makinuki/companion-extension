@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "MakiNuki Companion",
+  "version": "1.0.0",
+  "description": "Zero-CORS transport bridge for MakiNuki WASM scraper sources. Executes page-requested fetches with full headers and cookies.",
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "MakiNuki Companion"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/bridge.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "optional_host_permissions": ["<all_urls>"]
+}
